@@ -54,7 +54,7 @@ If you wish to build MacDown yourself, you will need the following components/to
 * Git
 * [CocoaPods](https://cocoapods.org) 1.16 or later, either from Homebrew (`brew install cocoapods`) or through [Bundler](http://bundler.io) with a Ruby 3.1+ installation (the Ruby bundled with macOS is too old)
 
-MacDown targets macOS 11 (Big Sur) or later and builds as a universal app (arm64 and x86_64) for release; debug builds only compile for the architecture of the machine you are on.
+MacDown targets macOS 12 (Monterey) or later and builds as a universal app (arm64 and x86_64) for release; debug builds only compile for the architecture of the machine you are on.
 
 ### Environment Setup
 

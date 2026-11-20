@@ -1189,12 +1189,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MacDown/Pods-MacDown-frameworks.sh",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1656,8 +1654,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1680,9 +1676,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1699,9 +1698,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1710,8 +1708,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1734,10 +1730,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1747,8 +1746,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1763,7 +1761,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacDown/Code/MacDown-Prefix.pch";
 				INFOPLIST_FILE = "MacDown/MacDown-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uranusjr.${PRODUCT_NAME:rfc1034identifier:lower}-debug";
 				PRODUCT_NAME = MacDown;
 				SDKROOT = macosx;
@@ -1781,7 +1779,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacDown/Code/MacDown-Prefix.pch";
 				INFOPLIST_FILE = "MacDown/MacDown-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uranusjr.${PRODUCT_NAME:rfc1034identifier:lower}";
 				PRODUCT_NAME = MacDown;
 				SDKROOT = macosx;
@@ -1807,7 +1805,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "MacDownTests/MacDownTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uranusjr.${PRODUCT_NAME:rfc1034identifier:lower}";
 				PRODUCT_NAME = MacDownTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1829,7 +1827,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacDown/Code/MacDown-Prefix.pch";
 				INFOPLIST_FILE = "MacDownTests/MacDownTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uranusjr.${PRODUCT_NAME:rfc1034identifier:lower}";
 				PRODUCT_NAME = MacDownTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
