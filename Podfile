@@ -1,5 +1,5 @@
-# MacDown requires macOS 11 (Big Sur) or later, the first release that runs
-# natively on Apple Silicon. Builds are universal (arm64 + x86_64).
+# MacDown requires macOS 12 (Monterey) or later, the oldest release current
+# Xcode can target. Builds are universal (arm64 + x86_64).
 MACDOWN_DEPLOYMENT_TARGET = '12.0'
 
 platform :osx, MACDOWN_DEPLOYMENT_TARGET
