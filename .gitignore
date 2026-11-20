@@ -190,3 +190,6 @@ Tools/GitHub-style-generator/node_modules/
 
 # Xcode caches created by external build (make) targets
 Dependency/*/[0-9]*-*/Xcode/
+
+# Packaged release builds
+dist/
