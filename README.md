@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/github/release/MacDownApp/macdown.svg)](http://macdown.uranusjr.com/download/latest/)
 ![Total downloads](https://img.shields.io/github/downloads/MacDownApp/macdown/latest/total.svg)
-[![Build Status](https://travis-ci.org/MacDownApp/macdown.svg?branch=master)](https://travis-ci.org/MacDownApp/macdown)
+[![Build](https://github.com/jaesquivel/macdown/actions/workflows/build.yml/badge.svg)](https://github.com/jaesquivel/macdown/actions/workflows/build.yml)
 
 
 MacDown is an open source Markdown editor for OS X, released under the MIT License. The author stole the idea from [Chen Luo](https://twitter.com/chenluois)’s [Mou](http://mouapp.com) so that people can make crappy clones.
@@ -49,35 +49,33 @@ The following editor themes and CSS files are extracted from [Mou](http://mouapp
 
 If you wish to build MacDown yourself, you will need the following components/tools:
 
-* OS X SDK (10.14 or later)
+* macOS 13 or later (Apple Silicon or Intel)
+* A recent Xcode (15 or later; tested with the current release)
 * Git
-* [Bundler](http://bundler.io)
+* [CocoaPods](https://cocoapods.org) 1.16 or later, either from Homebrew (`brew install cocoapods`) or through [Bundler](http://bundler.io) with a Ruby 3.1+ installation (the Ruby bundled with macOS is too old)
 
-> Note: Old versions of CocoaPods are not supported. Please use Bundler to execute CocoaPods, or make sure your CocoaPods is later than shown in `Gemfile.lock`.
-
-> Note: The Command Line Tools (CLT) should be unnecessary. If you failed to compile without it, please install CLT with
->
->     xcode-select --install
->
-> and report back.
-
-An appropriate SDK should be bundled with Xcode 5 or later versions.
+MacDown targets macOS 11 (Big Sur) or later and builds as a universal app (arm64 and x86_64) for release; debug builds only compile for the architecture of the machine you are on.
 
 ### Environment Setup
 
 After cloning the repository, run the following commands inside the repository root (directory containing this `README.md` file):
 
     git submodule update --init
-    bundle install
-    bundle exec pod install
+    pod install                    # or: bundle install && bundle exec pod install
     make -C Dependency/peg-markdown-highlight
 
 and open `MacDown.xcworkspace` in Xcode. The first command initialises the dependency submodule(s) used in MacDown; the second one installs dependencies managed by CocoaPods.
 
+To build from the command line instead:
+
+    xcodebuild -workspace MacDown.xcworkspace -scheme MacDown -configuration Release build
+
+The app is signed ad hoc ("Sign to Run Locally"), which is enough to run it on your own Mac, including Apple Silicon. Set your own signing identity if you want to distribute it.
+
 Refer to the official guides of Git and CocoaPods if you need more instructions. If you run into build issues later on, try running the following commands to update dependencies:
 
     git submodule update
-    bundle exec pod install
+    pod install
 
 ### Translation
 

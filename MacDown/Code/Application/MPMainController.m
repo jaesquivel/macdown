@@ -8,7 +8,7 @@
 
 #import "MPMainController.h"
 #import <MASPreferences/MASPreferencesWindowController.h>
-#import <Sparkle/SUUpdater.h>
+#import <Sparkle/Sparkle.h>
 #import "MPGlobals.h"
 #import "MPUtilities.h"
 #import "NSDocumentController+Document.h"
@@ -91,7 +91,7 @@ NS_INLINE void treat()
 }
 
 
-@interface MPMainController ()
+@interface MPMainController () <SPUUpdaterDelegate>
 @property (readonly) NSWindowController *preferencesWindowController;
 @end
 
@@ -260,9 +260,9 @@ NS_INLINE void treat()
 }
 
 
-#pragma mark - SUUpdaterDelegate
+#pragma mark - SPUUpdaterDelegate
 
-- (NSString *)feedURLStringForUpdater:(SUUpdater *)updater
+- (NSString *)feedURLStringForUpdater:(SPUUpdater *)updater
 {
     if (self.preferences.updateIncludesPreReleases)
         return [NSBundle mainBundle].infoDictionary[@"SUBetaFeedURL"];

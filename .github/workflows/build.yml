@@ -1,0 +1,49 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Show toolchain
+        run: |
+          sw_vers
+          xcodebuild -version
+          pod --version
+
+      - name: Install CocoaPods dependencies
+        run: pod install
+
+      - name: Build universal Release app
+        run: |
+          set -o pipefail
+          mkdir -p build
+          xcodebuild -workspace MacDown.xcworkspace -scheme MacDown \
+            -configuration Release -destination 'generic/platform=macOS' \
+            -derivedDataPath build/DerivedData build 2>&1 | tee build/xcodebuild.log
+
+      - name: Summarize warnings
+        if: always()
+        run: grep -E "(error|warning):" build/xcodebuild.log | sort | uniq -c | sort -rn | head -100 || true
+
+      - name: Check architectures
+        run: |
+          APP=build/DerivedData/Build/Products/Release/MacDown.app
+          lipo -info "$APP/Contents/MacOS/MacDown"
+          lipo "$APP/Contents/MacOS/MacDown" -verify_arch arm64 x86_64
+          codesign --verify --deep --strict "$APP"
+
+      - name: Run tests
+        run: |
+          set -o pipefail
+          xcodebuild -workspace MacDown.xcworkspace -scheme MacDown \
+            -destination 'platform=macOS' -derivedDataPath build/DerivedData test

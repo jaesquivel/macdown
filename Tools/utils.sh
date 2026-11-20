@@ -32,7 +32,13 @@ function get_short_version() {
 # Bundle version (commits-on-master[-until-branch "." commits-on-branch])
 # Assumes that two release branches will not diverge from the same commit on master.
 function get_bundle_version() {
-    if [ $(git rev-parse --abbrev-ref HEAD) = "master" ]; then
+    # Fall back to counting all commits when there is no local master branch
+    # (shallow CI checkouts, forks whose default branch is named differently).
+    if ! git rev-parse --verify --quiet master > /dev/null; then
+        echo $(git rev-list --count HEAD)
+        return
+    fi
+    if [ "$(git rev-parse --abbrev-ref HEAD)" = "master" ]; then
         MASTER_COMMIT_COUNT=$(git rev-list --count HEAD)
         BRANCH_COMMIT_COUNT=0
         BUNDLE_VERSION="$MASTER_COMMIT_COUNT"
